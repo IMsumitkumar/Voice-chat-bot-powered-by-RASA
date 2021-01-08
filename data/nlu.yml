@@ -1,0 +1,181 @@
+version: "2.0"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+- intent: subscribe
+  examples: |
+    - I want to get the newsletter
+    - Can you send me the newsletter?
+    - Can you sign me up for the newsletter?
+
+- intent: inform
+  examples: |
+    - My email is example@example.com
+    - random@example.com
+    - Please send it to anything@example.com
+    - Email is something@example.com
+
+- intent: ask_name
+  examples: |
+    - my name is sumit
+    - people call me lalit
+    - vineet kumar
+    - vipin} is my name
+    - I am shivam
+
+- intent: ask_time
+  examples: |
+    - what time is it right now?
+    - what day is it today?
+    - what's today?
+    - what's yesterday?
+
+# # ------
+
+# - intent: check_balance
+#   examples: |
+#     - What's my [credit](account) balance?
+#     - What's the balance on my [credit card account]{"entity":"account","value":"credit"}
+  
+# - synonym: credit
+#   examples: |
+#     - credit card account
+#     - credit account
+
+# nlu:
+# - regex: account_number
+#   examples: |
+#     - \d{10,12}
+
+# - lookup: banks
+#   examples: |
+#     - JPMC
+#     - Comerica
+#     - Bank of America
+
+# - intent: chitchat/ask_name
+#   examples: |
+#     - What is your name?
+#     - May I know your name?
+#     - What do people call you?
+#     - Do you have a name for yourself?
+
+
+# - intent: chitchat/ask_weather
+#   examples: |
+#     - What's the weather like today?
+#     - Does it look sunny outside today?
+#     - Oh, do you mind checking the weather for me please?
+#     - I like sunny days in Berlin.
+
+# - intent: check_balance
+#   examples: |
+#     - how much do I have on my [savings]("account") account
+#     - how much money is in my [checking]{"entity": "account"} account
+#     - What's the balance on my [credit card account]{"entity":"account","value":"credit"}
+#     - I want to fly from [Berlin]{"entity": "city", "role": "departure"} to [San Francisco]{"entity": "city", "role": "destination"}.
+#     - Give me a [small]{"entity": "size", "group": "1"} pizza with [mushrooms]{"entity": "topping", "group": "1"} and a [large]{"entity": "size", "group": "2"} [pepperoni]{"entity": "topping", "group": "2"}
+
+
+# # Ignoring Entities for Certain Intents 
+
+# - greet:
+#     use_entities: []  # ignore all entities for certain intents
+
+
+# - greet:   # To ignore some entities
+#     use_entities:
+#       - name
+#       - first_name
+#     ignore_entities:
+#       - location
+#       - age

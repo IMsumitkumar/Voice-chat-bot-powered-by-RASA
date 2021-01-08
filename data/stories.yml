@@ -1,0 +1,139 @@
+version: "2.0"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+- story: greet and subscribe
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: subscribe
+  - action: newsletter_form
+  - active_loop: newsletter_form
+
+- story: ask time
+  steps:
+  - intent: ask_time
+  - action: utter_ask_time
+
+- story: ask name
+  steps:
+  - intent: ask_name
+  - action: action_ask_name
+
+
+
+
+# # ----------
+
+# - story: story with a form
+#   steps:
+#   - intent: find_restaurant
+#   - action: restaurant_form                # Activate the form
+#   - active_loop: restaurant_form           # This form is currently active
+#   - active_loop: null                      # Form complete, no form is active
+#   - action: utter_restaurant_found
+
+# - story: story with a slot
+#   steps:
+#   - intent: celebrate_bot
+#   - slot_was_set:
+#     - feedback_value: positive
+#   - action: utter_yay
+
+# - story: The user just arrived from another city.
+#   steps:
+#     - intent: greet
+#     - action: utter_greet
+#     - intent: inform_location
+#       entities:
+#         - city: London
+#           role: from
+#     - action: utter_ask_about_trip
+
+# - story: The user is going to another city.
+#   steps:
+#     - intent: greet
+#     - action: utter_greet
+#     - intent: inform_location
+#       entities:
+#         - city: Madrid
+#           role: to
+#     - action: utter_wish_pleasant_stay
+
+# - story: collect restaurant booking info  # name of the story - just for debugging
+#   steps:
+#   - intent: greet                         # user message with no entities
+#   - action: utter_ask_howcanhelp
+#   - intent: inform                        # user message with no entities
+#     entities:
+#     - location: "rome"
+#     - price: "cheap"
+#   - action: utter_on_it                  # action that the bot should execute
+#   - action: utter_ask_cuisine
+#   - intent: inform
+#     entities:
+#     - cuisine: "spanish"
+#   - action: utter_ask_num_people
+
+# # Checkpoints are ways to connect stories together. 
+# # at begining or end
+
+# - story: story_with_a_checkpoint_1
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - checkpoint: greet_checkpoint
+
+# - story: story_with_a_checkpoint_2
+#   steps:
+#   - checkpoint: greet_checkpoint
+#   - intent: book_flight
+#   - action: action_book_flight
+
+# - story: story_with_a_conditional_checkpoint
+#   steps:
+#   - checkpoint: greet_checkpoint
+#     # This checkpoint should only apply if slots are set to the specified value
+#     slot_was_set:
+#     - context_scenario: holiday
+#     - holiday_name: thanksgiving
+#   - intent: greet
+#   - action: utter_greet_thanksgiving
+
+# # OR statement
+# # or steps are ways to handle multiple intents the same way, without writing a separate story for each intent.
+# - story: story with OR
+#   steps:
+#   - intent: signup_newsletter
+#   - action: utter_ask_confirm
+#   - or:
+#     - intent: affirm
+#     - intent: thanks
+#   - action: action_signup_newsletter

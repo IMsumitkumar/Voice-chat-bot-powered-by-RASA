@@ -1,0 +1,38 @@
+version: "2.0"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: activate subscribe form
+  steps:
+  - intent: subscribe
+  - action: newsletter_form
+  - active_loop: newsletter_form
+
+- rule: submit form
+  condition:
+  - active_loop: newsletter_form
+  steps:
+  - action: newsletter_form
+  - active_loop: null
+  - action: utter_subscribed
+
+
+
+# # A rule that with a condition looks like this
+# - rule: Only say `hey` when the user provided a name
+#   condition:
+#   - slot_was_set:
+#     - user_provided_name: true
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
